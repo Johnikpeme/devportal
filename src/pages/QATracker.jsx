@@ -68,7 +68,7 @@ const QATracker = () => {
   }, [isCreateModalOpen]);
   
   const handleBugClick = (bug) => {
-    navigate(`/devportal/qa/${bug.id}`);
+    navigate(`/qa/${bug.id}`);
   };
   
   const handleCreateBug = () => {
