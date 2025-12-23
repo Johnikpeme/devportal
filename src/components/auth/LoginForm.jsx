@@ -24,7 +24,7 @@ const LoginForm = () => {
     
     if (!authLoading && user && profile) {
       console.log('✅ User logged in with profile, redirecting to dashboard...');
-      navigate('/devportal/dashboard', { replace: true });
+      navigate('/dashboard', { replace: true });
     }
   }, [user, profile, authLoading, navigate]);
   

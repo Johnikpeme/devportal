@@ -14,7 +14,7 @@ const Login = () => {
   useEffect(() => {
     if (!loading && user && profile) {
       console.log('✅ Already logged in, redirecting...');
-      navigate('/devportal/dashboard', { replace: true });
+      navigate('/dashboard', { replace: true });
     }
   }, [user, profile, loading, navigate]);
   

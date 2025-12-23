@@ -87,7 +87,7 @@ export const AuthProvider = ({ children }) => {
     await supabase.auth.signOut();
     setUser(null);
     setProfile(null);
-    window.location.href = '/devportal/login';
+    window.location.href = '/login';
   };
 
   const value = {

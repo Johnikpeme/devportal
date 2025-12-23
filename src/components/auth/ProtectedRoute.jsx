@@ -28,7 +28,7 @@ const ProtectedRoute = ({ children }) => {
 
   // No user and not loading = redirect to login
   console.log('🔒 ProtectedRoute: No user session, redirecting to login');
-  return <Navigate to="/devportal/login" replace />;
+  return <Navigate to="/login" replace />;
 };
 
 export default ProtectedRoute;

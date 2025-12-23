@@ -223,7 +223,7 @@ const ProjectCard = ({ project }) => {
   return (
     <Card 
       hover 
-      onClick={() => navigate(`/devportal/projects/${project.id}`)}
+      onClick={() => navigate(`/projects/${project.id}`)}
       className="cursor-pointer group hover:shadow-lg transition-all duration-200"
     >
       {/* Header */}

@@ -273,7 +273,7 @@ const Dashboard = () => {
         setIsUploadDocModalOpen(true);
         break;
       case 'member':
-        navigate('/devportal/team?action=invite');
+        navigate('/team?action=invite');
         break;
       default:
         break;
@@ -415,7 +415,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-gray-900">Top Projects by Progress</h2>
             <button 
-              onClick={() => navigate('/devportal/projects')}
+              onClick={() => navigate('/projects')}
               className="text-primary hover:text-primary-600 font-medium text-sm"
             >
               View All →
@@ -590,7 +590,7 @@ const Dashboard = () => {
                 <button
                   onClick={() => {
                     handleCloseDocModal();
-                    navigate('/devportal/docs');
+                    navigate('/docs');
                   }}
                   className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 transition-colors"
                 >

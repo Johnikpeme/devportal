@@ -264,7 +264,7 @@ const Team = () => {
       }
       
       // Create sign-up link - they'll go to login page
-      const signupLink = `${window.location.origin}/devportal/login`;
+      const signupLink = `${window.location.origin}/login`;
       
       // Generate a random password for the invitation (they can change it later)
       const tempPassword = Math.random().toString(36).slice(-8);
@@ -281,7 +281,7 @@ const Team = () => {
               name: 'New User',
               invited: true
             },
-            emailRedirectTo: `${window.location.origin}/devportal/login`
+            emailRedirectTo: `${window.location.origin}/login`
           }
         });
         
@@ -444,7 +444,7 @@ const Team = () => {
                             <span 
                               key={idx} 
                               className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs cursor-pointer hover:bg-blue-50 hover:text-blue-700 transition"
-                              onClick={() => window.location.href = `/devportal/projects/${project.projectId}`}
+                              onClick={() => window.location.href = `/projects/${project.projectId}`}
                               title={`Go to ${project.name}`}
                             >
                               {project.codeName || project.name}
