@@ -1,0 +1,483 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Nouns Hunt",
+      "codeName": "Project Hunter",
+      "status": "in-development",
+      "platform": ["Android", "iOS"],
+      "genre": ["Mobile", "AR", "Puzzle"],
+      "subGenre": "Augmented Reality Treasure Hunt",
+      "maturityRating": "E (Everyone)",
+      "progress": 75,
+      "team": {
+        "total": 18,
+        "breakdown": {
+          "programming": 7,
+          "art": 4,
+          "design": 3,
+          "audio": 1,
+          "production": 2,
+          "qa": 1
+        }
+      },
+      "startDate": "2023-08-15",
+      "targetRelease": "2024-06-30",
+      "lead": {
+        "director": "Michael Adebayo",
+        "producer": "Chinwe Okoro",
+        "leadDesigner": "Tunde Johnson",
+        "leadProgrammer": "Sarah Chen",
+        "artDirector": "Zara Mohammed"
+      },
+      "bugs": { 
+        "critical": 2, 
+        "high": 5, 
+        "medium": 12,
+        "low": 28,
+        "total": 47
+      },
+      "description": "An augmented reality mobile game where players hunt for virtual Nouns characters in real-world locations using their phone cameras.",
+      "lore": "In a world where digital creatures called 'Nouns' have escaped into our reality, players must capture them before they cause digital chaos in the physical world.",
+      
+      "gameplay": {
+        "perspective": "Augmented Reality Camera View",
+        "gameplayStyle": "Location-based AR Collection Game",
+        "difficultyModes": ["Casual", "Normal", "Hard"],
+        "estimatedPlaytime": {
+          "mainStory": "15 hours",
+          "completionist": "40+ hours"
+        },
+        "features": [
+          "Real-world AR gameplay",
+          "GPS-based noun spawning",
+          "Multiplayer hunts",
+          "Daily challenges",
+          "Collection system",
+          "Leaderboards"
+        ]
+      },
+      
+      "technical": {
+        "engine": "Unity 2022 LTS",
+        "api": "ARCore, ARKit",
+        "renderer": "Universal Render Pipeline",
+        "resolution": "Device Native",
+        "rayTracing": false,
+        "dlss": false,
+        "storageRequired": "850 MB",
+        "languages": ["English", "Spanish", "French", "Chinese"]
+      },
+      
+      "budget": {
+        "total": 750000,
+        "allocated": {
+          "development": 450000,
+          "marketing": 150000,
+          "licensing": 50000,
+          "contingency": 100000
+        },
+        "spent": 520000,
+        "remaining": 230000,
+        "projectedRevenue": 2500000,
+        "pricePoints": {
+          "standard": "Free (IAP)",
+          "deluxe": "Premium $4.99",
+          "collector": "Bundle $9.99"
+        }
+      },
+      
+      "milestones": [
+        { "id": 1, "name": "Concept Approval", "status": "completed", "date": "2023-07-10", "notes": "AR mechanics approved" },
+        { "id": 2, "name": "AR Prototype", "status": "completed", "date": "2023-10-15", "notes": "Basic AR functionality working" },
+        { "id": 3, "name": "Alpha Build", "status": "completed", "date": "2024-01-20", "notes": "Core gameplay complete" },
+        { "id": 4, "name": "Beta Testing", "status": "in-progress", "date": "2024-03-01", "notes": "Closed beta with 1000 users" },
+        { "id": 5, "name": "App Store Submission", "status": "upcoming", "date": "2024-05-15", "notes": "iOS and Android store approval" },
+        { "id": 6, "name": "Launch", "status": "upcoming", "date": "2024-06-30", "notes": "Worldwide release" }
+      ],
+      
+      "artStyle": {
+        "theme": "Cartoonish 3D with vibrant colors",
+        "colorPalette": "Bright primary colors with soft outlines",
+        "inspiration": "Pokémon GO, Pikmin Bloom",
+        "polygonCount": {
+          "mainCharacter": "25k",
+          "environment": "500k per scene"
+        },
+        "textureResolution": "2K PBR materials"
+      },
+      
+      "audio": {
+        "composer": "Local Nigerian artists",
+        "soundtrack": "Afrobeat and electronic fusion",
+        "voiceActors": 15,
+        "languages": 4,
+        "estimatedMusicTracks": 25
+      },
+      
+      "marketing": {
+        "trailerViews": 850000,
+        "socialMedia": {
+          "twitter": 45000,
+          "discord": 15000,
+          "instagram": 35000,
+          "tiktok": 25000
+        },
+        "events": ["GDC 2024", "Mobile Gaming Summit"],
+        "pressKits": 2,
+        "influencers": 60
+      },
+      
+      "postLaunch": {
+        "seasonPass": false,
+        "plannedDLC": 5,
+        "liveService": true,
+        "roadmap": [
+          { "id": 1, "name": "Season 1: Urban Jungle", "date": "2024-08-01", "content": "City-based nouns and challenges", "price": null },
+          { "id": 2, "name": "Season 2: Mythical Pack", "date": "2024-10-15", "content": "Legendary African mythical creatures", "price": 2.99 },
+          { "id": 3, "name": "Season 3: Ocean Update", "date": "2025-01-01", "content": "Beach and coastal area nouns", "price": null }
+        ]
+      },
+      
+      "documents": [
+        { "id": 1, "name": "Game Design Document", "version": "2.5", "lastUpdated": "2024-01-15", "size": "12MB" },
+        { "id": 2, "name": "AR Technical Specification", "version": "1.8", "lastUpdated": "2024-02-10", "size": "6MB" },
+        { "id": 3, "name": "Marketing Strategy", "version": "1.2", "lastUpdated": "2024-01-30", "size": "4MB" }
+      ],
+      
+      "builds": [
+        { "id": 1, "version": "0.9.1", "date": "2024-03-15", "size": "820MB", "platform": "Android", "notes": "Beta build for testing" },
+        { "id": 2, "version": "0.9.0", "date": "2024-03-10", "size": "810MB", "platform": "iOS", "notes": "TestFlight beta" }
+      ],
+      
+      "risks": [
+        { "id": 1, "level": "medium", "description": "AR performance on older devices", "assigned": "Sarah Chen" },
+        { "id": 2, "level": "low", "description": "App store approval timeline", "assigned": "Chinwe Okoro" }
+      ],
+      
+      "awards": [
+        "Best AR Game Concept - Nigerian Game Awards 2023",
+        "Innovation Award - African Tech Summit"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Nouns Attack",
+      "codeName": "Project Defender",
+      "status": "production",
+      "platform": ["Android", "iOS"],
+      "genre": ["Mobile", "Tower Defense", "Strategy"],
+      "subGenre": "Real-time Strategy Tower Defense",
+      "maturityRating": "E10+ (Everyone 10+)",
+      "progress": 85,
+      "team": {
+        "total": 22,
+        "breakdown": {
+          "programming": 9,
+          "art": 6,
+          "design": 4,
+          "audio": 1,
+          "production": 1,
+          "qa": 1
+        }
+      },
+      "startDate": "2023-05-01",
+      "targetRelease": "2024-04-15",
+      "lead": {
+        "director": "Aisha Bello",
+        "producer": "Emeka Nwankwo",
+        "leadDesigner": "Femi Adekunle",
+        "leadProgrammer": "David Wilson",
+        "artDirector": "Grace Okonkwo"
+      },
+      "bugs": { 
+        "critical": 1, 
+        "high": 3, 
+        "medium": 8,
+        "low": 15,
+        "total": 27
+      },
+      "description": "A fast-paced tower defense game where players defend their Noun base from waves of enemies using strategic placement and special abilities.",
+      "lore": "The Noun kingdom is under attack from corrupted digital entities. Players must defend the central Noun server using ancient digital defenses.",
+      
+      "gameplay": {
+        "perspective": "Top-down 2.5D",
+        "gameplayStyle": "Real-time Strategy Tower Defense",
+        "difficultyModes": ["Easy", "Normal", "Hard", "Expert"],
+        "estimatedPlaytime": {
+          "mainStory": "20 hours",
+          "completionist": "50+ hours"
+        },
+        "features": [
+          "100+ levels",
+          "30+ unique towers",
+          "Multiplayer co-op",
+          "Daily events",
+          "Clan system",
+          "Resource management"
+        ]
+      },
+      
+      "technical": {
+        "engine": "Unity 2021 LTS",
+        "api": "OpenGL ES 3.0",
+        "renderer": "Built-in Render Pipeline",
+        "resolution": "1080p max",
+        "rayTracing": false,
+        "dlss": false,
+        "storageRequired": "650 MB",
+        "languages": ["English", "Spanish", "Portuguese", "French", "Arabic"]
+      },
+      
+      "budget": {
+        "total": 500000,
+        "allocated": {
+          "development": 300000,
+          "marketing": 120000,
+          "licensing": 30000,
+          "contingency": 50000
+        },
+        "spent": 420000,
+        "remaining": 80000,
+        "projectedRevenue": 1800000,
+        "pricePoints": {
+          "standard": "Free (IAP)",
+          "deluxe": "Ad-free $2.99",
+          "collector": "Starter Pack $7.99"
+        }
+      },
+      
+      "milestones": [
+        { "id": 1, "name": "Prototype Complete", "status": "completed", "date": "2023-07-01", "notes": "Core TD mechanics working" },
+        { "id": 2, "name": "Alpha Testing", "status": "completed", "date": "2023-10-15", "notes": "First 50 levels complete" },
+        { "id": 3, "name": "Beta Launch", "status": "completed", "date": "2024-01-10", "notes": "Soft launch in Canada/Australia" },
+        { "id": 4, "name": "Content Complete", "status": "in-progress", "date": "2024-03-01", "notes": "Final levels being polished" },
+        { "id": 5, "name": "Worldwide Launch", "status": "upcoming", "date": "2024-04-15", "notes": "Global release on app stores" }
+      ],
+      
+      "artStyle": {
+        "theme": "Cartoon cyberpunk",
+        "colorPalette": "Neon blues and purples with dark backgrounds",
+        "inspiration": "Bloons TD, Kingdom Rush",
+        "polygonCount": {
+          "mainCharacter": "15k",
+          "environment": "300k per scene"
+        },
+        "textureResolution": "2K compressed"
+      },
+      
+      "audio": {
+        "composer": "Nigerian electronic artists",
+        "soundtrack": "Electronic with African percussion",
+        "voiceActors": 10,
+        "languages": 5,
+        "estimatedMusicTracks": 30
+      },
+      
+      "marketing": {
+        "trailerViews": 1200000,
+        "socialMedia": {
+          "twitter": 65000,
+          "discord": 28000,
+          "instagram": 45000,
+          "youtube": 15000
+        },
+        "events": ["Mobile World Congress", "PAX East"],
+        "pressKits": 3,
+        "influencers": 85
+      },
+      
+      "postLaunch": {
+        "seasonPass": true,
+        "plannedDLC": 6,
+        "liveService": true,
+        "roadmap": [
+          { "id": 1, "name": "Update 1.1: New Towers", "date": "2024-05-15", "content": "5 new defensive towers", "price": null },
+          { "id": 2, "name": "DLC: Ancient Defenders", "date": "2024-07-01", "content": "Mythical tower pack", "price": 3.99 },
+          { "id": 3, "name": "Update 1.2: Clan Wars", "date": "2024-08-15", "content": "PvP clan battles", "price": null }
+        ]
+      },
+      
+      "documents": [
+        { "id": 1, "name": "Game Design Document", "version": "3.1", "lastUpdated": "2024-02-01", "size": "10MB" },
+        { "id": 2, "name": "Monetization Strategy", "version": "2.0", "lastUpdated": "2023-12-15", "size": "3MB" }
+      ],
+      
+      "builds": [
+        { "id": 1, "version": "1.0.3", "date": "2024-03-01", "size": "680MB", "platform": "Android", "notes": "Beta soft launch" },
+        { "id": 2, "version": "1.0.2", "date": "2024-02-25", "size": "670MB", "platform": "iOS", "notes": "TestFlight build" }
+      ],
+      
+      "risks": [
+        { "id": 1, "level": "high", "description": "Monetization balance issues", "assigned": "Aisha Bello" },
+        { "id": 2, "level": "medium", "description": "Server load at launch", "assigned": "David Wilson" }
+      ],
+      
+      "awards": [
+        "Best Mobile Game - Lagos Game Dev Awards",
+        "Player's Choice - Beta Testing Awards"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "A Nation Divided",
+      "codeName": "Project Unity",
+      "status": "pre-production",
+      "platform": ["PC", "PlayStation 5", "Xbox Series X"],
+      "genre": ["Historical", "Narrative", "Adventure"],
+      "subGenre": "Historical Narrative Adventure",
+      "maturityRating": "M (Mature 17+)",
+      "progress": 25,
+      "team": {
+        "total": 45,
+        "breakdown": {
+          "programming": 16,
+          "art": 14,
+          "design": 8,
+          "audio": 3,
+          "production": 2,
+          "qa": 2
+        }
+      },
+      "startDate": "2024-01-10",
+      "targetRelease": "2026-12-01",
+      "lead": {
+        "director": "Chukwuma Eze",
+        "producer": "Ngozi Onwurah",
+        "leadDesigner": "Oluwatobi Adeyemi",
+        "leadProgrammer": "Alex Kim",
+        "artDirector": "Fatima Bello"
+      },
+      "bugs": { 
+        "critical": 0, 
+        "high": 2, 
+        "medium": 6,
+        "low": 15,
+        "total": 23
+      },
+      "description": "A narrative-driven historical adventure game exploring the Nigerian Civil War (1967-1970) through the eyes of ordinary people on both sides of the conflict.",
+      "lore": "Based on true events, the game follows multiple characters navigating the complex social, political, and human dimensions of one of Africa's most significant conflicts.",
+      
+      "gameplay": {
+        "perspective": "Third-person with cinematic camera",
+        "gameplayStyle": "Narrative Adventure with Light Stealth",
+        "difficultyModes": ["Story", "Normal", "Historical"],
+        "estimatedPlaytime": {
+          "mainStory": "12-15 hours",
+          "completionist": "25-30 hours"
+        },
+        "features": [
+          "Branching narrative with moral choices",
+          "Historical accuracy mode",
+          "Photo mode with historical facts",
+          "Multiple playable characters",
+          "Documentary-style cutscenes",
+          "Educational commentary"
+        ]
+      },
+      
+      "technical": {
+        "engine": "Unreal Engine 5",
+        "api": "DirectX 12",
+        "renderer": "Lumen + Nanite",
+        "resolution": "4K @ 60fps",
+        "rayTracing": true,
+        "dlss": true,
+        "storageRequired": "120 GB",
+        "languages": ["English", "Igbo", "Yoruba", "Hausa", "French", "Portuguese"]
+      },
+      
+      "budget": {
+        "total": 8000000,
+        "allocated": {
+          "development": 5000000,
+          "marketing": 1500000,
+          "licensing": 500000,
+          "contingency": 1000000
+        },
+        "spent": 1200000,
+        "remaining": 6800000,
+        "projectedRevenue": 35000000,
+        "pricePoints": {
+          "standard": "$49.99",
+          "deluxe": "$69.99",
+          "collector": "$99.99"
+        }
+      },
+      
+      "milestones": [
+        { "id": 1, "name": "Historical Research Complete", "status": "completed", "date": "2024-03-01", "notes": "Comprehensive research phase done" },
+        { "id": 2, "name": "Story Finalization", "status": "completed", "date": "2024-05-15", "notes": "Narrative structure approved" },
+        { "id": 3, "name": "Pre-Production Complete", "status": "in-progress", "date": "2024-09-30", "notes": "All design docs final" },
+        { "id": 4, "name": "Vertical Slice", "status": "upcoming", "date": "2025-03-15", "notes": "First playable demo" },
+        { "id": 5, "name": "Alpha Build", "status": "upcoming", "date": "2025-12-01", "notes": "Core gameplay complete" },
+        { "id": 6, "name": "Beta Testing", "status": "upcoming", "date": "2026-06-01", "notes": "Historical accuracy review" },
+        { "id": 7, "name": "Launch", "status": "upcoming", "date": "2026-12-01", "notes": "Worldwide release with documentary" }
+      ],
+      
+      "artStyle": {
+        "theme": "Photorealistic historical recreation",
+        "colorPalette": "Earthy tones with period-appropriate colors",
+        "inspiration": "Historical photographs, documentaries",
+        "polygonCount": {
+          "mainCharacter": "250k",
+          "environment": "15-25 million per scene"
+        },
+        "textureResolution": "8K photogrammetry"
+      },
+      
+      "audio": {
+        "composer": "Nigerian classical composer",
+        "soundtrack": "Orchestral with traditional Nigerian instruments",
+        "voiceActors": 60,
+        "languages": 6,
+        "estimatedMusicTracks": 50
+      },
+      
+      "marketing": {
+        "trailerViews": 350000,
+        "socialMedia": {
+          "twitter": 25000,
+          "discord": 8000,
+          "instagram": 18000
+        },
+        "events": ["The Game Awards", "African Film Festival"],
+        "pressKits": 4,
+        "influencers": 40
+      },
+      
+      "postLaunch": {
+        "seasonPass": true,
+        "plannedDLC": 4,
+        "liveService": false,
+        "roadmap": [
+          { "id": 1, "name": "Documentary Series", "date": "2027-03-01", "content": "Behind-the-scenes documentary", "price": null },
+          { "id": 2, "name": "DLC: Untold Stories", "date": "2027-06-01", "content": "Additional character stories", "price": 14.99 },
+          { "id": 3, "name": "Educational Pack", "date": "2027-09-01", "content": "Classroom resources and materials", "price": 9.99 }
+        ]
+      },
+      
+      "documents": [
+        { "id": 1, "name": "Historical Accuracy Document", "version": "1.0", "lastUpdated": "2024-02-28", "size": "25MB" },
+        { "id": 2, "name": "Game Design Document", "version": "2.3", "lastUpdated": "2024-04-10", "size": "18MB" },
+        { "id": 3, "name": "Art Bible", "version": "1.2", "lastUpdated": "2024-03-20", "size": "55MB" },
+        { "id": 4, "name": "Cultural Consultation Notes", "version": "1.0", "lastUpdated": "2024-01-30", "size": "8MB" }
+      ],
+      
+      "builds": [
+        { "id": 1, "version": "0.1.0", "date": "2024-03-15", "size": "15GB", "platform": "PC", "notes": "Early prototype - environment test" }
+      ],
+      
+      "risks": [
+        { "id": 1, "level": "high", "description": "Historical accuracy and sensitivity", "assigned": "Chukwuma Eze" },
+        { "id": 2, "level": "high", "description": "Budget constraints for authenticity", "assigned": "Ngozi Onwurah" },
+        { "id": 3, "level": "medium", "description": "Voice actor availability for local languages", "assigned": "Fatima Bello" }
+      ],
+      
+      "awards": [
+        "Most Anticipated Historical Game - IGN Africa",
+        "Cultural Heritage Award - UNESCO Partnership"
+      ]
+    }
+  ]
+}
