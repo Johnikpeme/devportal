@@ -16,14 +16,13 @@ import CreateProject from './components/projects/CreateProject';
 
 function App() {
   return (
-    /* No basename needed for subdomain deployment */
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Public Route */}
+          {/* 1. Public Route: Suitable for subdomain root */}
           <Route path="/login" element={<Login />} />
           
-          {/* Protected Routes Wrapper */}
+          {/* 2. Protected Routes: Suitable for subdomain root */}
           <Route
             path="/"
             element={
@@ -32,24 +31,19 @@ function App() {
               </ProtectedRoute>
             }
           >
+            {/* The logic below remains exactly as you had it */}
             <Route index element={<Dashboard />} />
-            
-            {/* Project Routes */}
             <Route path="projects" element={<ProjectsList />} />
             <Route path="projects/new" element={<CreateProject />} /> 
             <Route path="projects/:id" element={<ProjectDetail />} />
-            
-            {/* QA and Bug Tracking */}
             <Route path="qa" element={<QATracker />} />
             <Route path="qa/:id" element={<BugDetail />} />
-            
-            {/* Other Pages */}
             <Route path="docs" element={<Documentation />} />
             <Route path="team" element={<Team />} />
             <Route path="settings" element={<Settings />} />
           </Route>
           
-          {/* Global Redirect: Send unknown paths to home (which will then check auth) */}
+          {/* 3. Global Redirect: Ensures any 404s or old paths hit your dashboard */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>

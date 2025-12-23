@@ -62,13 +62,14 @@ const Sidebar = ({ isMobileOpen, setIsMobileOpen }) => {
     avatar20,
   };
   
+  // UPDATED PATHS: Removed /devportal to match your App.jsx routes
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/devportal' },
-    { id: 'projects', label: 'Projects', icon: FolderKanban, path: '/devportal/projects' },
-    { id: 'qa', label: 'QA Tracker', icon: Bug, path: '/devportal/qa' },
-    { id: 'docs', label: 'Documentation', icon: FileText, path: '/devportal/docs' },
-    { id: 'team', label: 'Team', icon: Users, path: '/devportal/team' },
-    { id: 'settings', label: 'Settings', icon: Settings, path: '/devportal/settings' },
+    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/' },
+    { id: 'projects', label: 'Projects', icon: FolderKanban, path: '/projects' },
+    { id: 'qa', label: 'QA Tracker', icon: Bug, path: '/qa' },
+    { id: 'docs', label: 'Documentation', icon: FileText, path: '/docs' },
+    { id: 'team', label: 'Team', icon: Users, path: '/team' },
+    { id: 'settings', label: 'Settings', icon: Settings, path: '/settings' },
   ];
   
   // Fetch user profile from Supabase
@@ -196,7 +197,8 @@ const Sidebar = ({ isMobileOpen, setIsMobileOpen }) => {
               <NavLink
                 key={item.id}
                 to={item.path}
-                end={item.path === '/devportal'}
+                // UPDATED: Now looks for '/' as the exact end point for Dashboard
+                end={item.path === '/'}
                 onClick={() => setIsMobileOpen(false)}
                 className={({ isActive }) => classNames(
                   'flex items-center gap-3 px-4 py-3 rounded-lg',
