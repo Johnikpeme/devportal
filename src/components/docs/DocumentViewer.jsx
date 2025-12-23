@@ -311,7 +311,6 @@ const DocumentViewer = ({ document }) => {
         
       case 'mp3':
       case 'wav':
-      case 'ogg':
         return (
           <div className="flex flex-col items-center p-8">
             <div className="w-full max-w-md bg-gray-100 rounded-xl p-6">

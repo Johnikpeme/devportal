@@ -23,7 +23,7 @@ function App() {
           {/* Public Route */}
           <Route path="/login" element={<Login />} />
           
-          {/* Protected Routes - Rooted at / */}
+          {/* Protected Routes Wrapper */}
           <Route
             path="/"
             element={
@@ -32,7 +32,6 @@ function App() {
               </ProtectedRoute>
             }
           >
-            {/* Dashboard is the home page of the subdomain */}
             <Route index element={<Dashboard />} />
             
             {/* Project Routes */}
@@ -50,7 +49,7 @@ function App() {
             <Route path="settings" element={<Settings />} />
           </Route>
           
-          {/* Global Redirect: If a user hits a weird URL, send them to Dashboard */}
+          {/* Global Redirect: Send unknown paths to home (which will then check auth) */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>

@@ -1,15 +1,14 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth'; 
 import { Loader } from 'lucide-react';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
+  const location = useLocation();
 
   console.log('🛡️ ProtectedRoute:', { hasUser: !!user, loading });
 
-  // CRITICAL FIX: Only show loading if NO user exists AND we're still loading
-  // This prevents showing "Verifying session" when we already have a user
   if (loading && !user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
@@ -21,14 +20,14 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  // If we have a user (even if loading is true), show the content
   if (user) {
     return children;
   }
 
-  // No user and not loading = redirect to login
+  // FIXED: Changed /devportal/login to /login
+  // Added state so user can be sent back to their intended page after login
   console.log('🔒 ProtectedRoute: No user session, redirecting to login');
-  return <Navigate to="/devportal/login" replace />;
+  return <Navigate to="/login" state={{ from: location }} replace />;
 };
 
 export default ProtectedRoute;
