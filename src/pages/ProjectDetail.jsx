@@ -175,7 +175,7 @@ const ProjectDetailPage = () => {
           <h3 className="text-xl font-semibold text-gray-900 mb-2">Project Not Found</h3>
           <p className="text-gray-600 mb-6">The project you're looking for doesn't exist.</p>
           <button
-            onClick={() => navigate('/devportal/projects')}
+            onClick={() => navigate('/projects')}
             className="flex items-center gap-2 text-primary hover:text-primary-600"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -634,7 +634,7 @@ const ProjectDetailPage = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <button
-          onClick={() => navigate('/devportal/projects')}
+          onClick={() => navigate('/projects')}
           className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition"
         >
           <ChevronLeft className="w-5 h-5" />
@@ -648,7 +648,7 @@ const ProjectDetailPage = () => {
       
       <Breadcrumb 
         items={[
-          { label: 'Projects', href: '/devportal/projects' },
+          { label: 'Projects', href: '/projects' },
           { label: project.name }
         ]}
       />

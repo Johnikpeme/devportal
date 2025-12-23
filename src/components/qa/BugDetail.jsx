@@ -66,7 +66,7 @@ const BugDetail = () => {
         
         if (isNaN(bugId)) {
           console.error('Invalid bug ID:', id);
-          navigate('/devportal/qa');
+          navigate('/qa');
           return;
         }
         
@@ -84,11 +84,11 @@ const BugDetail = () => {
           const uniqueProjects = [...new Set(bugsData.map(b => b.project).filter(Boolean))];
           setProjects(uniqueProjects);
         } else {
-          navigate('/devportal/qa');
+          navigate('/qa');
         }
       } catch (err) {
         console.error('Error fetching bug:', err);
-        navigate('/devportal/qa');
+        navigate('/qa');
       } finally {
         setLoading(false);
       }
@@ -97,7 +97,7 @@ const BugDetail = () => {
     if (id) {
       fetchBug();
     } else {
-      navigate('/devportal/qa');
+      navigate('/qa');
     }
   }, [id, navigate]);
   
@@ -117,7 +117,7 @@ const BugDetail = () => {
   };
   
   const handleClose = () => {
-    navigate('/devportal/qa');
+    navigate('/qa');
   };
   
   const handleAddComment = async () => {
@@ -214,7 +214,7 @@ const BugDetail = () => {
       setDeleting('bug');
       await bugService.deleteBug(bug.id);
       setShowDeleteModal({ show: false, type: '', id: null, name: '' });
-      navigate('/devportal/qa');
+      navigate('/qa');
     } catch (err) {
       console.error('Error deleting bug:', err);
     } finally {
@@ -388,7 +388,7 @@ const BugDetail = () => {
           <Button 
             variant="ghost" 
             icon={ArrowLeft}
-            onClick={() => navigate('/devportal/qa')}
+            onClick={() => navigate('/qa')}
           >
             Back to QA Tracker
           </Button>
