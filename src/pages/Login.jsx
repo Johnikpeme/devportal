@@ -64,13 +64,13 @@ const Login = () => {
           {/* Domain Notice */}
           <div className="px-8 pb-6">
             <div className="text-xs text-gray-500 text-center p-3 bg-blue-50 rounded-lg border border-blue-100">
-              <span className="font-semibold">Note:</span> Exclusive for the Dash Studios Team. All Rights Reserved.
+              <span className="font-semibold">Note:</span> Exclusive for the Dash Studios Team.
             </div>
           </div>
         </div>
         
         <p className="text-center text-sm text-gray-500 mt-6">
-          © 2024 Dash Studios. All rights reserved.
+          © 2026 Dash Studios. All rights reserved.
         </p>
       </div>
     </div>
