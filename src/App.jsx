@@ -13,6 +13,8 @@ import Documentation from './pages/Documentation';
 import Team from './pages/Team';
 import Settings from './pages/Settings';
 import CreateProject from './components/projects/CreateProject';
+import Incubator from './pages/Incubator';
+import IncubatorDetail from './pages/IncubatorDetail';
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
             <Route path="projects" element={<ProjectsList />} />
             <Route path="projects/new" element={<CreateProject />} /> 
             <Route path="projects/:id" element={<ProjectDetail />} />
+            <Route path="incubator" element={<Incubator />} />
+            <Route path="incubator/:id" element={<IncubatorDetail />} /> 
             <Route path="qa" element={<QATracker />} />
             <Route path="qa/:id" element={<BugDetail />} />
             <Route path="docs" element={<Documentation />} />

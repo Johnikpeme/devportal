@@ -238,7 +238,10 @@ export const AuthProvider = ({ children }) => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'slack_oidc',
         options: {
-          redirectTo: `${window.location.origin}/login`
+          redirectTo: `${window.location.origin}/login`,
+          queryParams: {
+            team: 'T06NN77QUTA' // Dash Studios workspace team ID
+          }
         }
       });
       

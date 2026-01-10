@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Upload, X, Loader, Paperclip, File, Image as ImageIcon, FileCode, Video, Check, AlertOctagon } from 'lucide-react';
 import Card from '../common/Card';
 import Button from '../common/Button';
 import Input from '../common/Input';
 import { projectService } from '../../services/projectService';
 import { bugService } from '../../services/bugService';
+import { notificationService } from '../../services/notificationService'; // Import Notification Service
+import { AuthContext } from '../../components/auth/AuthContext'; // Import AuthContext
 
 const CreateBug = ({ onSubmit, onCancel }) => {
+  const { profile } = useContext(AuthContext); // Get current user profile
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -179,6 +183,9 @@ const CreateBug = ({ onSubmit, onCancel }) => {
     setLoading(true);
     
     try {
+      // Determine the actual reporter name (User Profile Name > Form Data > Default)
+      const currentUserName = profile?.name || formData.reportedBy || 'Unknown User';
+
       // Step 1: Create the bug in Supabase FIRST
       const bugData = {
         title: formData.title,
@@ -193,7 +200,7 @@ const CreateBug = ({ onSubmit, onCancel }) => {
         version: formData.version,
         environment: formData.environment,
         platform: formData.platform,
-        reportedBy: formData.reportedBy,
+        reportedBy: currentUserName, // Use the resolved name
         assignedTo: formData.assignedTo,
         status: formData.status,
         createdAt: new Date().toISOString(),
@@ -260,13 +267,26 @@ const CreateBug = ({ onSubmit, onCancel }) => {
         }
       }
       
-      // Step 4: Get the complete bug data
+      // Step 4: Get the complete bug data (including ID and Attachment URLs)
       const fullBugData = await bugService.getBug(createdBug.id);
       
+      // --- START: Slack Notification Integration ---
+      let notificationCount = 0;
+      try {
+        // Send notification using the service
+        // This will find all members of the selected 'project' and alert them
+        notificationCount = await notificationService.notifyNewBug(fullBugData, currentUserName);
+        console.log(`Slack notifications sent to ${notificationCount} team members.`);
+      } catch (notifError) {
+        console.error("Failed to send Slack notifications:", notifError);
+        // We do NOT stop the UI success flow if notifications fail
+      }
+      // --- END: Slack Notification Integration ---
+
       // Step 5: Show success message
       const successMessage = attachments.length > 0
-        ? `Bug created successfully with ${uploadedAttachments.length} attachment(s)`
-        : 'Bug created successfully';
+        ? `Bug created & ${notificationCount} team members notified. (${uploadedAttachments.length} attachments uploaded)`
+        : `Bug created successfully. ${notificationCount} team members notified.`;
       
       setUploadStatus({
         show: true,
@@ -275,9 +295,7 @@ const CreateBug = ({ onSubmit, onCancel }) => {
       });
       
       // Step 6: Only call parent's onSubmit AFTER everything is done
-      // This should NOT create another bug - it should just handle what to do next
       if (onSubmit) {
-        // Pass the created bug data to parent
         await onSubmit(fullBugData);
       }
       

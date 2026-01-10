@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
   LayoutDashboard, FolderKanban, Bug, FileText, 
-  Users, Settings, LogOut, X 
+  Users, Settings, LogOut, X, Lightbulb // <--- Added Lightbulb import
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { classNames } from '@/utils/helpers';
@@ -40,32 +40,17 @@ const Sidebar = ({ isMobileOpen, setIsMobileOpen }) => {
   
   // Create a mapping of avatar names to imported images
   const avatarMap = {
-    avatar1,
-    avatar2,
-    avatar3,
-    avatar4,
-    avatar5,
-    avatar6,
-    avatar7,
-    avatar8,
-    avatar9,
-    avatar10,
-    avatar11,
-    avatar12,
-    avatar13,
-    avatar14,
-    avatar15,
-    avatar16,
-    avatar17,
-    avatar18,
-    avatar19,
-    avatar20,
+    avatar1, avatar2, avatar3, avatar4, avatar5,
+    avatar6, avatar7, avatar8, avatar9, avatar10,
+    avatar11, avatar12, avatar13, avatar14, avatar15,
+    avatar16, avatar17, avatar18, avatar19, avatar20,
   };
   
-  // UPDATED PATHS: Removed /devportal to match your App.jsx routes
+  // UPDATED PATHS: Added Incubator
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/' },
     { id: 'projects', label: 'Projects', icon: FolderKanban, path: '/projects' },
+    { id: 'incubator', label: 'The Incubator', icon: Lightbulb, path: '/incubator' }, // <--- New Item
     { id: 'qa', label: 'QA Tracker', icon: Bug, path: '/qa' },
     { id: 'docs', label: 'Documentation', icon: FileText, path: '/docs' },
     { id: 'team', label: 'Team', icon: Users, path: '/team' },
@@ -111,7 +96,7 @@ const Sidebar = ({ isMobileOpen, setIsMobileOpen }) => {
     return null;
   };
   
-  // Get the user's display name (profile name or auth name)
+  // Get the user's display name
   const getDisplayName = () => {
     if (userProfile?.name) return userProfile.name;
     if (user?.name) return user.name;
@@ -119,7 +104,7 @@ const Sidebar = ({ isMobileOpen, setIsMobileOpen }) => {
     return 'User';
   };
   
-  // Get the user's role (profile role or auth role)
+  // Get the user's role
   const getDisplayRole = () => {
     if (userProfile?.role) return userProfile.role;
     if (user?.role) return user.role;
@@ -168,7 +153,7 @@ const Sidebar = ({ isMobileOpen, setIsMobileOpen }) => {
         isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
       )}>
         <div className="h-full flex flex-col">
-          {/* Logo - Cleaner version */}
+          {/* Logo */}
           <div className="p-6 border-b border-gray-200 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-16 h-12 bg-primary rounded-lg flex items-center justify-center overflow-hidden">
@@ -197,7 +182,6 @@ const Sidebar = ({ isMobileOpen, setIsMobileOpen }) => {
               <NavLink
                 key={item.id}
                 to={item.path}
-                // UPDATED: Now looks for '/' as the exact end point for Dashboard
                 end={item.path === '/'}
                 onClick={() => setIsMobileOpen(false)}
                 className={({ isActive }) => classNames(

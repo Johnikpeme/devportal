@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { notificationService } from '../../services/notificationService';
 import { 
   Bug, Calendar, User, Tag, MessageSquare, 
   Edit, Trash2, CheckCircle, XCircle, AlertTriangle,
@@ -121,54 +122,72 @@ const BugDetail = () => {
   };
   
   const handleAddComment = async () => {
-    if (comment.trim() && bug) {
-      try {
-        const newComment = {
-          author: currentUserProfile?.name || 'Unknown User',
-          text: comment,
-          createdAt: new Date().toISOString()
-        };
-        
-        const updatedComments = await bugService.addComment(bug.id, newComment);
-        
-        const updatedBug = {
-          ...bug,
-          comments: updatedComments,
-          updatedAt: new Date().toISOString()
-        };
-        
-        setBug(updatedBug);
-        setEditedBug(updatedBug);
-        setComment('');
-      } catch (err) {
-        console.error('Error adding comment:', err);
-      }
+  if (comment.trim() && bug) {
+    try {
+      const newComment = {
+        author: currentUserProfile?.name || 'Unknown User',
+        text: comment,
+        createdAt: new Date().toISOString()
+      };
+      
+      const updatedComments = await bugService.addComment(bug.id, newComment);
+      
+      const updatedBug = {
+        ...bug,
+        comments: updatedComments,
+        updatedAt: new Date().toISOString()
+      };
+      
+      setBug(updatedBug);
+      setEditedBug(updatedBug);
+      setComment('');
+
+      // 🔔 SEND SLACK NOTIFICATIONS FOR NEW COMMENT
+      await notificationService.notifyComment(
+        updatedBug,
+        currentUserProfile?.name || 'Unknown User'
+      );
+    } catch (err) {
+      console.error('Error adding comment:', err);
     }
-  };
+  }
+};
   
   const handleSaveEdit = async () => {
-    try {
-      const updates = {};
-      
-      Object.keys(editedBug).forEach(key => {
-        if (key !== 'id' && key !== 'createdAt' && key !== 'updatedAt' && key !== 'resolvedAt') {
-          if (editedBug[key] !== bug[key]) {
-            updates[key] = editedBug[key];
-          }
+  try {
+    const updates = {};
+    
+    Object.keys(editedBug).forEach(key => {
+      if (key !== 'id' && key !== 'createdAt' && key !== 'updatedAt' && key !== 'resolvedAt') {
+        if (editedBug[key] !== bug[key]) {
+          updates[key] = editedBug[key];
         }
-      });
-      
-      if (Object.keys(updates).length > 0) {
-        const updatedBug = await bugService.updateBug(bug.id, updates);
-        setBug(updatedBug);
-        setEditedBug(updatedBug);
       }
-      
-      setIsEditing(false);
-    } catch (err) {
-      console.error('Error saving bug:', err);
+    });
+    
+    if (Object.keys(updates).length > 0) {
+      const updatedBug = await bugService.updateBug(bug.id, updates);
+      setBug(updatedBug);
+      setEditedBug(updatedBug);
+
+      // 🔔 SEND SLACK NOTIFICATIONS FOR UPDATES
+      // Only notify if significant fields changed (not just minor edits)
+      const significantFields = ['priority', 'severity', 'platform', 'assignedTo'];
+      const hasSignificantChanges = Object.keys(updates).some(key => 
+        significantFields.includes(key)
+      );
+
+      if (hasSignificantChanges) {
+        await notificationService.notifyUpdate(updatedBug);
+      }
     }
-  };
+    
+    setIsEditing(false);
+  } catch (err) {
+    console.error('Error saving bug:', err);
+  }
+};
+
   
   const handleCancelEdit = () => {
     setEditedBug(bug);
@@ -176,38 +195,56 @@ const BugDetail = () => {
   };
   
   const handleStatusChange = async (bugId, status, resolution) => {
-    try {
-      const updates = {
-        status: status
-      };
-      
-      if (resolution) {
-        updates.resolution = resolution;
-      }
-      
-      const updatedBug = await bugService.updateBug(bugId, updates);
-      
-      setBug(updatedBug);
-      setEditedBug(updatedBug);
-      setShowStatusModal(false);
-    } catch (err) {
-      console.error('Error updating status:', err);
+  try {
+    const previousStatus = bug.status;
+    
+    const updates = {
+      status: status
+    };
+    
+    if (resolution) {
+      updates.resolution = resolution;
     }
-  };
+    
+    const updatedBug = await bugService.updateBug(bugId, updates);
+    
+    setBug(updatedBug);
+    setEditedBug(updatedBug);
+    setShowStatusModal(false);
+
+    // 🔔 SEND SLACK NOTIFICATIONS FOR STATUS CHANGE
+    if (previousStatus !== status) {
+      await notificationService.notifyStatusChange(updatedBug, previousStatus);
+    }
+  } catch (err) {
+    console.error('Error updating status:', err);
+  }
+};
   
   const handleReassign = async (bugId, assignee) => {
-    try {
-      const updatedBug = await bugService.updateBug(bugId, {
-        assignedTo: assignee
-      });
-      
-      setBug(updatedBug);
-      setEditedBug(updatedBug);
-      setShowReassignModal(false);
-    } catch (err) {
-      console.error('Error reassigning bug:', err);
+  try {
+    const previousAssignee = bug.assignedTo;
+    
+    const updatedBug = await bugService.updateBug(bugId, {
+      assignedTo: assignee
+    });
+    
+    setBug(updatedBug);
+    setEditedBug(updatedBug);
+    setShowReassignModal(false);
+
+    // 🔔 SEND SLACK NOTIFICATIONS FOR REASSIGNMENT
+    if (previousAssignee !== assignee) {
+      await notificationService.notifyReassignment(
+        updatedBug,
+        previousAssignee,
+        assignee
+      );
     }
-  };
+  } catch (err) {
+    console.error('Error reassigning bug:', err);
+  }
+};
   
   const handleDeleteBug = async () => {
     try {
